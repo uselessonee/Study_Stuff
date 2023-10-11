@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 int n,m;
+int x;
 void Init_Matrix(int*** matrix) {
     *matrix = (int**)malloc(m * sizeof(int*));
     for (int i = 0; i < m; i++) {
@@ -60,7 +61,6 @@ int isPrime(int num) {
 }
 
 
-
 void demTongSoNguyenTo(int** matrix) {
     int count =0;
     int sum;
@@ -78,18 +78,21 @@ void demTongSoNguyenTo(int** matrix) {
 }
 
 
-void Print_Pos(int** matrix, int x) {
+void Print_Pos(int** matrix) {
     int found = 0;
     printf("Vi tri cac phan tu co gia tri bang %d la: ", x);
     for (int i = 0; i < m; i++) {
         for(int j=0; j< n; j++)
         {
-            if (matrix[i][j] == x) {
+            if (matrix[i][j] == x) 
+            {
             printf("%d %d \n", i,j);
             found = 1;
-        }
+            }
         }
     }
+
+    // while
     if (!found) {
         printf("Khong co phan tu nao co gia tri bang %d", x);
     }
@@ -149,6 +152,18 @@ int Horse_cock(int** matrix)
     return count;
 }
 
+void sort_matrix(int **matrix, int rows, int cols) {
+  for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < cols - 1; j++) {
+      if (matrix[i][j] > matrix[i][j + 1]) {
+        int temp = matrix[i][j];
+        matrix[i][j] = matrix[i][j + 1];
+        matrix[i][j + 1] = temp;
+      }
+    }
+  }
+}
+
 int main()
 {
     int** matrix;
@@ -161,11 +176,19 @@ int main()
     printf("Gia tri lon nhat la: %d \n", find_Max(matrix));
     printf("Gia tri nho nhat la: %d \n", find_Min(matrix));
 
-    int x;
     printf("Nhap gia tri can tim vi tri: ");
     scanf("%d", &x);
-    Print_Pos(matrix, x);
-    
+    Print_Pos(matrix);
     
     printf("%d",Horse_cock(matrix));
+
+    sort_matrix(matrix, rows, cols);
+
+    printf("Ma tran sau khi sap xep:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+        printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
 }

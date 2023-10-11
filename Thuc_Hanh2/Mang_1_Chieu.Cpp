@@ -73,7 +73,7 @@ void Print_Pos(int* arr, int n, int x) {
     printf("\n");
 }
 
-void sapXepTangDan(int* arr, int n) {
+void Sorting(int* arr, int n) {
     for (int i = 0; i < n - 1; i++) {
         for (int j = i + 1; j < n; j++) {
             if (arr[i] > arr[j]) {
@@ -85,16 +85,16 @@ void sapXepTangDan(int* arr, int n) {
     }
 }
 
-void chenGiaTri(int** arr, int* n, int x, int viTri) {
+void Add_Vaule(int** arr, int* n, int x, int Pos) {
     (*n)++;
     *arr = (int*)realloc(*arr, (*n) * sizeof(int));
-    for (int i = (*n) - 1; i > viTri; i--) {
+    for (int i = (*n) - 1; i > Pos; i--) {
         (*arr)[i] = (*arr)[i - 1];
     }
-    (*arr)[viTri] = x;
+    (*arr)[Pos] = x;
 }
 
-void xoaGiaTri(int** arr, int* n, int k) {
+void Del_Vaule(int** arr, int* n, int k) {
     int count = 0;
     for (int i = 0; i < *n; i++) {
         if ((*arr)[i] == k) {
@@ -133,23 +133,23 @@ int main() {
     scanf("%d", &x);
     Print_Pos(arr, n, x);
 
-    sapXepTangDan(arr, n);
+    Sorting(arr, n);
     printf("Mang sau khi sap xep tang dan: ");
     xuatMang(arr, n);
 
-    int viTri, giaTri;
+    int Pos, giaTri;
     printf("Nhap gia tri can chen: ");
     scanf("%d", &giaTri);
     printf("Nhap vi tri can chen: ");
-    scanf("%d", &viTri);
-    chenGiaTri(&arr, &n, giaTri, viTri);
+    scanf("%d", &Pos);
+    Add_Vaule(&arr, &n, giaTri, Pos);
     printf("Mang sau khi chen gia tri: ");
     xuatMang(arr, n);
 
     int k;
     printf("Nhap gia tri can xoa: ");
     scanf("%d", &k);
-    xoaGiaTri(&arr, &n, k);
+    Del_Vaule(&arr, &n, k);
     printf("Mang sau khi xoa gia tri: ");
     xuatMang(arr, n);
 

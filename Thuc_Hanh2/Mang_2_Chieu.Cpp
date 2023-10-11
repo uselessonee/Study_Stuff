@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-void Init_Matrix(int*** matrix, int m, int n) {
+int n,m;
+void Init_Matrix(int*** matrix) {
     *matrix = (int**)malloc(m * sizeof(int*));
     for (int i = 0; i < m; i++) {
         (*matrix)[i] = (int*)malloc(n * sizeof(int));
@@ -13,7 +13,7 @@ void Init_Matrix(int*** matrix, int m, int n) {
 }
 
 
-void Print_Matrix(int** matrix, int m, int n) {
+void Print_Matrix(int** matrix) {
     printf("Ma tran vua nhap:\n");
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
@@ -23,7 +23,7 @@ void Print_Matrix(int** matrix, int m, int n) {
     }
 }
 
-int find_Max(int** matrix, int m, int n) {
+int find_Max(int** matrix) {
     int max = matrix[0][0];
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
@@ -35,7 +35,7 @@ int find_Max(int** matrix, int m, int n) {
     return max;
 }
 
-int find_Min(int** matrix, int m, int n) {
+int find_Min(int** matrix) {
     int min = matrix[0][0];
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
@@ -61,7 +61,7 @@ int isPrime(int num) {
 
 
 
-void demTongSoNguyenTo(int** matrix, int m, int n) {
+void demTongSoNguyenTo(int** matrix) {
     int count =0;
     int sum;
      for (int i = 0; i < m; i++) {
@@ -77,16 +77,32 @@ void demTongSoNguyenTo(int** matrix, int m, int n) {
     printf("Tong cac phan tu trong matrix: %d \n", sum);
 }
 
+
+void Print_Pos(int** matrix, int x) {
+    int found = 0;
+    printf("Vi tri cac phan tu co gia tri bang %d la: ", x);
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == x) {
+            printf("%d ", i);
+            found = 1;
+        }
+    }
+    if (!found) {
+        printf("Khong co phan tu nao co gia tri bang %d", x);
+    }
+    printf("\n");
+}
+
+
 int main()
 {
     int** matrix;
-    int n,m;
     printf("Nhap so dong va cot: ");
     scanf("%d", &m);
     scanf("%d", &n);
-    Init_Matrix(&matrix, m,n);
-    Print_Matrix(matrix, m,n);
+    Init_Matrix(&matrix);
+    Print_Matrix(matrix);
     
-    printf("Gia tri lon nhat la: %d \n", find_Max(matrix, n,m));
-    printf("Gia tri nho nhat la: %d \n", find_Min(matrix, n,m));
+    printf("Gia tri lon nhat la: %d \n", find_Max(matrix));
+    printf("Gia tri nho nhat la: %d \n", find_Min(matrix));
 }

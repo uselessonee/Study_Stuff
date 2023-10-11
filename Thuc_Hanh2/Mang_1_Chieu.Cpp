@@ -94,7 +94,6 @@ void chenGiaTri(int** arr, int* n, int x, int viTri) {
     (*arr)[viTri] = x;
 }
 
-// Hàm xóa giá trị k khỏi mảng
 void xoaGiaTri(int** arr, int* n, int k) {
     int count = 0;
     for (int i = 0; i < *n; i++) {

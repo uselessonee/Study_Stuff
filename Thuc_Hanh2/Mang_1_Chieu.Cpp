@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void nhapMang(int** arr, int n) {
+void Init_Arr(int** arr, int n) {
     *arr = (int*)malloc(n * sizeof(int));
     for (int i = 0; i < n; i++) {
         printf("Nhap phan tu thu %d: ", i + 1);
@@ -9,7 +9,7 @@ void nhapMang(int** arr, int n) {
     }
 }
 
-void xuatMang(int* arr, int n) {
+void Print_Arr(int* arr, int n) {
     printf("Mang vua nhap la: ");
     for (int i = 0; i < n; i++) {
         printf("%d ", arr[i]);
@@ -17,7 +17,7 @@ void xuatMang(int* arr, int n) {
     printf("\n");
 }
 
-int timMax(int* arr, int n) {
+int Find_Max(int* arr, int n) {
     int max = arr[0];
     for (int i = 1; i < n; i++) {
         if (arr[i] > max) {
@@ -58,7 +58,7 @@ void demTongSoNguyenTo(int* arr, int n, int* count, int* sum) {
     }
 }
 
-void inViTri(int* arr, int n, int x) {
+void Print_Pos(int* arr, int n, int x) {
     int found = 0;
     printf("Vi tri cac phan tu co gia tri bang %d la: ", x);
     for (int i = 0; i < n; i++) {
@@ -114,10 +114,10 @@ int main() {
 
     int* arr;
 
-    nhapMang(&arr, n);
-    xuatMang(arr, n);
+    Init_Arr(&arr, n);
+    Print_Arr(arr, n);
 
-    int max = timMax(arr, n);
+    int max = Find_Max(arr, n);
     printf("Gia tri lon nhat trong mang la: %d\n", max);
 
     int tich = tinhTich(arr, n);
@@ -131,7 +131,7 @@ int main() {
     int x;
     printf("Nhap gia tri can tim vi tri: ");
     scanf("%d", &x);
-    inViTri(arr, n, x);
+    Print_Pos(arr, n, x);
 
     sapXepTangDan(arr, n);
     printf("Mang sau khi sap xep tang dan: ");

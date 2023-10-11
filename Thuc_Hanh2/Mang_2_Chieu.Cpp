@@ -82,9 +82,12 @@ void Print_Pos(int** matrix, int x) {
     int found = 0;
     printf("Vi tri cac phan tu co gia tri bang %d la: ", x);
     for (int i = 0; i < n; i++) {
-        if (arr[i] == x) {
-            printf("%d ", i);
+        for(int j=0; j<= m; j++)
+        {
+            if (arr[i][j] == x) {
+            printf("%d %d \n", i,j);
             found = 1;
+        }
         }
     }
     if (!found) {

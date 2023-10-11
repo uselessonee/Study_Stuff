@@ -82,7 +82,7 @@ void Print_Pos(int** matrix, int x) {
     int found = 0;
     printf("Vi tri cac phan tu co gia tri bang %d la: ", x);
     for (int i = 0; i < n; i++) {
-        for(int j=0; j<= m; j++)
+        for(int j=0; j< m; j++)
         {
             if (matrix[i][j] == x) {
             printf("%d %d \n", i,j);
@@ -96,6 +96,15 @@ void Print_Pos(int** matrix, int x) {
     printf("\n");
 }
 
+void Horse_cock(int** matrix)
+{
+    for (int i = 0; i < n; i++) {
+        for(int j=0; j< m; j++)
+        {
+            
+        }
+    }
+}
 
 int main()
 {

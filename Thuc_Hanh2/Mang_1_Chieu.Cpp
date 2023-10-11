@@ -117,11 +117,9 @@ int main() {
     Init_Arr(&arr, n);
     Print_Arr(arr, n);
 
-    int max = Find_Max(arr, n);
-    printf("Gia tri lon nhat trong mang la: %d\n", max);
+    printf("Gia tri lon nhat trong mang la: %d\n", Find_Max(arr, n));
 
-    int tich = tinhTich(arr, n);
-    printf("Tich cac phan tu trong mang la: %d\n", tich);
+    printf("Tich cac phan tu trong mang la: %d\n", tinhTich(arr, n));
 
     int count, sum;
     demTongSoNguyenTo(arr, n, &count, &sum);

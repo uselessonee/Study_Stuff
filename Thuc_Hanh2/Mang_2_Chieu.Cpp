@@ -108,4 +108,9 @@ int main()
     
     printf("Gia tri lon nhat la: %d \n", find_Max(matrix));
     printf("Gia tri nho nhat la: %d \n", find_Min(matrix));
+
+    int x;
+    printf("Nhap gia tri can tim vi tri: ");
+    scanf("%d", &x);
+    Print_Pos(matrix, x);
 }

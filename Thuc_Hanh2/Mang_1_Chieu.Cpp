@@ -35,7 +35,7 @@ int tinhTich(int* arr, int n) {
     return tich;
 }
 
-int laSoNguyenTo(int num) {
+int isPrime(int num) {
     if (num < 2) {
         return 0;
     }
@@ -51,7 +51,7 @@ void demTongSoNguyenTo(int* arr, int n, int* count, int* sum) {
     *count = 0;
     *sum = 0;
     for (int i = 0; i < n; i++) {
-        if (laSoNguyenTo(arr[i])) {
+        if (isPrime(arr[i])) {
             (*count)++;
             (*sum) += arr[i];
         }

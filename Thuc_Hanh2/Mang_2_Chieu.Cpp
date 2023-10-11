@@ -49,6 +49,7 @@ int find_Min(int** matrix, int m, int n) {
 
 int main()
 {
+    int* matrix;
     int n,m;
     printf("Nhap so dong va cot: ");
     scanf("%d", &n);

@@ -164,6 +164,54 @@ void sort_matrix(int **matrix, int rows, int cols) {
   }
 }
 
+
+
+int sum_diagonal_elements(int **matrix) {
+  int size = m > n ? m : n;
+  int sum = 0;
+
+  for (int i = 0; i < size; i++) {
+    sum += matrix[i][i];
+  }
+
+  return sum;
+}
+
+int count_even_elements_in_upper_triangle(int **matrix) {
+  int size = m > n ? m : n;
+
+  int count = 0;
+
+  for (int i = 0; i < size; i++) {
+    for (int j = 0; j < i; j++) {
+      if (matrix[i][j] % 2 == 0) {
+        count++;
+      }
+    }
+  }
+
+  return count;
+}
+
+
+void sum_matrices(int **A, int **B, int **C, int rows, int cols) {
+  // Khởi tạo ma trận C
+  for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < cols; j++) {
+      C[i][j] = 0;
+    }
+  }
+
+  // Duyệt qua từng dòng của ma trận A và B
+  for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < cols; j++) {
+      // Cộng giá trị của hai phần tử tương ứng
+      C[i][j] = A[i][j] + B[i][j];
+    }
+  }
+}
+
+
 int main()
 {
     int** matrix;
@@ -191,4 +239,7 @@ int main()
         }
         printf("\n");
     }
+
+
+    printf("Tong duong cheo chinh: %d",sum_diagonal_elements(matrix, rows, cols));
 }

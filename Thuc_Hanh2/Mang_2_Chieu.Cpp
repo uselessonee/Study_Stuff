@@ -81,8 +81,8 @@ void demTongSoNguyenTo(int** matrix) {
 void Print_Pos(int** matrix, int x) {
     int found = 0;
     printf("Vi tri cac phan tu co gia tri bang %d la: ", x);
-    for (int i = 0; i < n; i++) {
-        for(int j=0; j< m; j++)
+    for (int i = 0; i < m; i++) {
+        for(int j=0; j< n; j++)
         {
             if (matrix[i][j] == x) {
             printf("%d %d \n", i,j);
@@ -96,14 +96,57 @@ void Print_Pos(int** matrix, int x) {
     printf("\n");
 }
 
-void Horse_cock(int** matrix)
-{
+
+int Find_Max(int* arr, int n) {
+    int max = arr[0];
     for (int i = 0; i < n; i++) {
-        for(int j=0; j< m; j++)
-        {
-            
+        if (arr[i] > max) {
+            max = arr[i];
         }
     }
+    return max;
+}
+
+void Horse_cock(int** matrix)
+{
+    int i, j;
+    int count = 0;
+    int col;
+    float max;
+    float min;
+ 
+    for (i = 0; i < m; i++)
+    {
+        max = A[i][0];
+        col = 0;
+        for (j = 1; j < n; j++)
+        {
+            // Find maximum in a row
+            if (max < A[i][j])
+            {
+                max = A[i][j];
+                col = j;
+            }
+        }
+ 
+        // Find minimum in a column col
+        min = A[0][col];
+        for (int i = 1; i < nRow; i++)
+        {
+            if (min > A[i][col])
+            {
+                min = A[i][col];
+            }
+        }
+ 
+        // Compare maximum in row and minimm in column
+        if (max == min)
+        {
+            count++;
+        }
+    }
+ 
+    return count;
 }
 
 int main()

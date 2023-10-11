@@ -61,15 +61,20 @@ int isPrime(int num) {
 
 
 
-void demTongSoNguyenTo(int** arr, int n, int* count, int* sum) {
-    *count = 0;
-    *sum = 0;
-    for (int i = 0; i < n; i++) {
-        if (isprime(arr[i])) {
-            (*count)++;
-            (*sum) += arr[i];
+void demTongSoNguyenTo(int** matrix, int m, int n) {
+    int count =0;
+    int sum;
+     for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            if (isPrime(matrix[i][j])) {
+                count++;
+            }
+            sum += matrix[i][j];
         }
     }
+
+    printf("So phan tu nguyen to : %d \n", count);
+    printf("Tong cac phan tu trong matrix: %d \n", sum);
 }
 
 int main()

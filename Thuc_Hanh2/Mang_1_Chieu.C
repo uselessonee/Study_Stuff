@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <conio.h>
+#include <stdlib.h>
  int* arr;
  int n;
 
@@ -40,5 +41,8 @@ int main()
     Nhap_Mang();
     Xuat_Mang();
 
+    printf("Gia tri lon nhat la: %d \n",find_Max();
     free(arr);
+
+    getch();
 }

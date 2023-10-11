@@ -107,7 +107,7 @@ int Find_Max(int* arr, int n) {
     return max;
 }
 
-void Horse_cock(int** matrix)
+int Horse_cock(int** matrix)
 {
     int i, j;
     int count = 0;
@@ -117,25 +117,25 @@ void Horse_cock(int** matrix)
  
     for (i = 0; i < m; i++)
     {
-        max = A[i][0];
+        max = matrix[i][0];
         col = 0;
         for (j = 1; j < n; j++)
         {
             // Find maximum in a row
-            if (max < A[i][j])
+            if (max < matrix[i][j])
             {
-                max = A[i][j];
+                max = matrix[i][j];
                 col = j;
             }
         }
  
         // Find minimum in a column col
-        min = A[0][col];
-        for (int i = 1; i < nRow; i++)
+        min = matrix[0][col];
+        for (int i = 1; i < n; i++)
         {
-            if (min > A[i][col])
+            if (min > matrix[i][col])
             {
-                min = A[i][col];
+                min = matrix[i][col];
             }
         }
  
@@ -165,4 +165,7 @@ int main()
     printf("Nhap gia tri can tim vi tri: ");
     scanf("%d", &x);
     Print_Pos(matrix, x);
+    
+    
+    printf("%d",Horse_cock(matrix));
 }

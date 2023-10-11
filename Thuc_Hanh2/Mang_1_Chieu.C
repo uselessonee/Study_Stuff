@@ -1,5 +1,4 @@
 #include <stdlib.h>
-
 #include <stdio.h>
 
 void nhapMang(int** arr, int n) {
@@ -59,7 +58,6 @@ void demTongSoNguyenTo(int* arr, int n, int* count, int* sum) {
     }
 }
 
-// Hàm in vị trí các phần tử có giá trị bằng x
 void inViTri(int* arr, int n, int x) {
     int found = 0;
     printf("Vi tri cac phan tu co gia tri bang %d la: ", x);
@@ -75,7 +73,6 @@ void inViTri(int* arr, int n, int x) {
     printf("\n");
 }
 
-// Hàm sắp xếp mảng tăng dần
 void sapXepTangDan(int* arr, int n) {
     for (int i = 0; i < n - 1; i++) {
         for (int j = i + 1; j < n; j++) {
@@ -88,7 +85,6 @@ void sapXepTangDan(int* arr, int n) {
     }
 }
 
-// Hàm chèn giá trị
 void chenGiaTri(int** arr, int* n, int x, int viTri) {
     (*n)++;
     *arr = (int*)realloc(*arr, (*n) * sizeof(int));
@@ -134,7 +130,7 @@ int main() {
     printf("Tong cac phan tu nguyen to trong mang la: %d\n", sum);
 
     int x;
-    printf("Nhap gia tri x: ");
+    printf("Nhap gia tri can tim vi tri: ");
     scanf("%d", &x);
     inViTri(arr, n, x);
 
@@ -152,7 +148,7 @@ int main() {
     xuatMang(arr, n);
 
     int k;
-    printf("Nhap gia tri k can xoa: ");
+    printf("Nhap gia tri can xoa: ");
     scanf("%d", &k);
     xoaGiaTri(&arr, &n, k);
     printf("Mang sau khi xoa gia tri: ");

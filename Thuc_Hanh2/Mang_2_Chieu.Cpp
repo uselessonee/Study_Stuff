@@ -82,7 +82,6 @@ int isPrime(int num)
     return 1;
 }
 
-
 //The name said everything
 void Count_Prime_Sum_Num()
 {
@@ -140,7 +139,6 @@ int Find_Max(int *arr, int n)
     }
     return max;
 }
-
 int Saddle_Point()
 {
     int i, j;
@@ -183,7 +181,6 @@ int Saddle_Point()
     return count;
 }
 
-
 //Sorting
 void sort_matrix()
 {
@@ -212,6 +209,10 @@ void sort_matrix()
     }
 }
 
+int sum_diagonal_elements()
+{
+    int size = m > n ? m : n;
+    int sum = 0;
 
 //Straight to HELL BABY!
 int sum_diagonal_elements()
@@ -237,6 +238,20 @@ int count_even_elements_in_upper_triangle()
 
     for (int i = 0; i < size; i++)
     {
+        sum += matrix[i][i];
+    }
+
+    return sum;
+}
+
+int count_even_elements_in_upper_triangle()
+{
+    int size = m > n ? m : n;
+
+    int count = 0;
+
+    for (int i = 0; i < size; i++)
+    {
         for (int j = 0; j < i; j++)
         {
             if (matrix[i][j] % 2 == 0)
@@ -249,10 +264,7 @@ int count_even_elements_in_upper_triangle()
     return count;
 }
 
-
-
 void Print_Odd_Nums_On_SecDiagonal(int a[][n]) {
-  // Khởi tạo chỉ số bắt đầu của đường chéo phụ và tam giác dưới của đường chéo phụ
   int i = 0;
   int size = m > n ? m : n;
   int j = size -1;
@@ -296,6 +308,24 @@ void sum_matrices()
 }
 
 //MAIN
+void sum_matrices(int **A, int **B, int **C)
+{
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            C[i][j] = 0;
+        }
+    }
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            C[i][j] = A[i][j] + B[i][j];
+        }
+    }
+}
+
 int main()
 {
     printf("Nhap so dong va cot: ");
@@ -308,18 +338,13 @@ int main()
     printf("Gia tri lon nhat la: %d \n", find_Max(matrix));
     printf("Gia tri nho nhat la: %d \n", find_Min(matrix));
 
-
     Count_Prime_Sum_Num();
-
 
     // find POS
     printf("Nhap gia tri can tim vi tri: ");
     scanf("%d", &x);
     Print_Pos();
-
-
-
-
+  
     printf("%d", Saddle_Point());
 
     sort_matrix();
@@ -337,4 +362,6 @@ int main()
 
     getch();
 
+}
+    printf("Tong duong cheo chinh: %d", sum_diagonal_elements());
 }

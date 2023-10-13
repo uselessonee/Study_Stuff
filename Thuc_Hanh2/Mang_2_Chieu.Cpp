@@ -322,11 +322,6 @@ int main()
     getch();
     system("cls");
 
-    printf("Tong duong cheo chinh: %d", sum_diagonal_elements());
-
-    getch();
-    system("cls");
-
     sum_matrices();
 
     getch();

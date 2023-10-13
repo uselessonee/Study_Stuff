@@ -288,6 +288,7 @@ void sum_matrices()
             C[i][j] = A[i][j] + B[i][j];
         }
     }
+    Print_Matrix(&C, m, n);
 }
 
 int main()
@@ -321,13 +322,12 @@ int main()
     getch();
     system("cls");
 
-    sum_matrices();
-
-    getch();
-
     printf("Tong duong cheo chinh: %d", sum_diagonal_elements());
 
-    sum_matrices();
     getch();
+    system("cls");
 
+    sum_matrices();
+
+    getch();
 }

@@ -82,7 +82,7 @@ int isPrime(int num)
     return 1;
 }
 
-//The name said everything
+// The name said everything
 void Count_Prime_Sum_Num()
 {
     int count = 0;
@@ -103,8 +103,7 @@ void Count_Prime_Sum_Num()
     printf("Tong cac phan tu trong matrix: %d \n", sum);
 }
 
-
-//Find X
+// Find X
 void Print_Pos()
 {
     int found = 0;
@@ -181,7 +180,7 @@ int Saddle_Point()
     return count;
 }
 
-//Sorting
+// Sorting
 void sort_matrix()
 {
     int **matrice_sorted;
@@ -209,12 +208,7 @@ void sort_matrix()
     }
 }
 
-int sum_diagonal_elements()
-{
-    int size = m > n ? m : n;
-    int sum = 0;
-
-//Straight to HELL BABY!
+// Straight to HELL BABY!
 int sum_diagonal_elements()
 {
     int size = m > n ? m : n;
@@ -227,22 +221,8 @@ int sum_diagonal_elements()
 
     return sum;
 }
-
 
 // I have no talent when it comes to naming things...
-int count_even_elements_in_upper_triangle()
-{
-    int size = m > n ? m : n;
-
-    int count = 0;
-
-    for (int i = 0; i < size; i++)
-    {
-        sum += matrix[i][i];
-    }
-
-    return sum;
-}
 
 int count_even_elements_in_upper_triangle()
 {
@@ -264,29 +244,32 @@ int count_even_elements_in_upper_triangle()
     return count;
 }
 
-void Print_Odd_Nums_On_SecDiagonal(int a[][n]) {
-  int i = 0;
-  int size = m > n ? m : n;
-  int j = size -1;
+void Print_Odd_Nums_On_SecDiagonal()
+{
+    int i = 0;
+    int size = m > n ? m : n;
+    int j = size - 1;
 
-  while (i < size && j >= 0) {
-    printf("%d ", a[i][j]);
+    while (i < size && j >= 0)
+    {
+        printf("%d ", matrix[i][j]);
 
-    if (a[i][j] % 2 != 0) {
-      printf("*");
+        if (matrix[i][j] % 2 != 0)
+        {
+            printf("*");
+        }
+
+        i++;
+        j--;
     }
-
-    i++;
-    j--;
-  }
 }
 
-
-//Sum...
+// Sum...
 void sum_matrices()
 {
-    int **A, int **B, int **C;
-
+    int **A;
+    int **B;
+    int **C;
 
     printf("Nhap dong va cot:");
     scanf("%d", &m);
@@ -298,25 +281,6 @@ void sum_matrices()
     printf("Tao ma tran B:");
     Init_Matrix(&B);
     C = A;
-    for (int i = 0; i < m; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            C[i][j] = A[i][j] + B[i][j];
-        }
-    }
-}
-
-//MAIN
-void sum_matrices(int **A, int **B, int **C)
-{
-    for (int i = 0; i < m; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            C[i][j] = 0;
-        }
-    }
     for (int i = 0; i < m; i++)
     {
         for (int j = 0; j < n; j++)
@@ -344,13 +308,12 @@ int main()
     printf("Nhap gia tri can tim vi tri: ");
     scanf("%d", &x);
     Print_Pos();
-  
+
     printf("%d", Saddle_Point());
 
     sort_matrix();
 
     printf("Tong duong cheo chinh: %d", sum_diagonal_elements());
-
 
     count_even_elements_in_upper_triangle();
 
@@ -362,6 +325,5 @@ int main()
 
     getch();
 
-}
     printf("Tong duong cheo chinh: %d", sum_diagonal_elements());
 }

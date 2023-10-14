@@ -288,7 +288,7 @@ void sum_matrices()
             C[i][j] = A[i][j] + B[i][j];
         }
     }
-    Print_Matrix(&C, m, n);
+    Print_Matrix(C, m, n);
 }
 
 int main()

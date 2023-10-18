@@ -114,33 +114,34 @@ void Sorting(int *arr)
     }
 }
 
-void Add_Vaule(int **arr, int x, int Pos)
+void Add_Vaule(int *arr, int x, int Pos)
 {
     n++;
-    *arr = (int *)realloc(*arr, n * sizeof(int));
+    arr = (int *)realloc(arr, n * sizeof(int));
     for (int i = n - 1; i > Pos; i--)
     {
-        (*arr)[i] = (*arr)[i - 1];
+        arr[i] = arr[i - 1];
     }
-    (*arr)[Pos] = x;
+    arr[Pos] = x;
 }
 
-void Del_Vaule(int **arr, int k)
+
+void Del_Vaule(int *arr, int k)
 {
     int count = 0;
     for (int i = 0; i < n; i++)
     {
-        if ((*arr)[i] == k)
+        if (arr[i] == k)
         {
             count++;
         }
         else
         {
-            (*arr)[i - count] = (*arr)[i];
+            arr[i - count] = arr[i];
         }
     }
     n -= count;
-    *arr = (int *)realloc(*arr, n * sizeof(int));
+    arr = (int *)realloc(arr, n * sizeof(int));
 }
 
 int main()
@@ -201,7 +202,7 @@ int main()
     int k;
     printf("Nhap gia tri can xoa: ");
     scanf("%d", &k);
-    Del_Vaule(&arr, k);
+    Del_Vaule(arr, k);
     printf("Mang sau khi xoa gia tri: ");
     Print_Arr(arr);
     printf("\n Enter de ket thuc");

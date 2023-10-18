@@ -126,18 +126,6 @@ void Print_Pos()
     printf("\n");
 }
 
-int Find_Max(int *arr, int n)
-{
-    int max = arr[0];
-    for (int i = 0; i < n; i++)
-    {
-        if (arr[i] > max)
-        {
-            max = arr[i];
-        }
-    }
-    return max;
-}
 int Saddle_Point()
 {
     int i, j;
@@ -250,6 +238,7 @@ void Print_Odd_Nums_On_SecDiagonal()
     int size = m > n ? m : n;
     int j = size - 1;
 
+    printf("Cac so le trong tam giac duoi duong cheo phu:");
     while (i < size && j >= 0)
     {
         printf("%d ", matrix[i][j]);
@@ -288,42 +277,79 @@ void sum_matrices()
             C[i][j] = A[i][j] + B[i][j];
         }
     }
+    Print_Matrix(C, m, n);
 }
-
 int main()
 {
+    // 1
     printf("Nhap so dong va cot: ");
     scanf("%d", &m);
     scanf("%d", &n);
+    // 2
     Init_Matrix(&matrix);
+    // 3
+    printf("\n Enter de tiep tuc");
+    getch();
+    system("cls");
     Print_Matrix(matrix, m, n);
 
-    // Find max, min
+    // 4
     printf("Gia tri lon nhat la: %d \n", find_Max(matrix));
     printf("Gia tri nho nhat la: %d \n", find_Min(matrix));
+    printf("\n Enter de tiep tuc");
+    getch();
+    system("cls");
 
+    // 5
+    printf("\n Enter de tiep tuc");
+    getch();
+    system("cls");
     Count_Prime_Sum_Num();
 
-    // find POS
+    // 6
+    printf("\n Enter de tiep tuc");
+    getch();
+    system("cls");
     printf("Nhap gia tri can tim vi tri: ");
     scanf("%d", &x);
     Print_Pos();
 
-    printf("%d", Saddle_Point());
+    // 7
+    printf("\n Enter de tiep tuc");
+    getch();
+    system("cls");
+    printf("\n diem yen ngua: %d", Saddle_Point());
 
+    // 8
+    printf("\n Enter de tiep tuc");
+    getch();
+    system("cls");
     sort_matrix();
 
+    // 9
+    printf("\n Enter de tiep tuc");
+    getch();
+    system("cls");
     printf("Tong duong cheo chinh: %d", sum_diagonal_elements());
 
-    count_even_elements_in_upper_triangle();
+    // 10
+    printf("\n Enter de tiep tuc");
+    getch();
+    system("cls");
+    printf("\n So chang nam trong tam giac tren:", count_even_elements_in_upper_triangle());
+
+    // 11
+    printf("\n Enter de tiep tuc");
+    getch();
+    system("cls");
+    Print_Odd_Nums_On_SecDiagonal();
 
     printf("\n Enter de tiep tuc");
     getch();
     system("cls");
 
+    // 12
     sum_matrices();
 
     getch();
-
-    printf("Tong duong cheo chinh: %d", sum_diagonal_elements());
 }

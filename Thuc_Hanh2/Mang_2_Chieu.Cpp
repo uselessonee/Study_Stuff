@@ -351,5 +351,6 @@ int main()
     // 12
     sum_matrices();
 
+    free(matrix);
     getch();
 }

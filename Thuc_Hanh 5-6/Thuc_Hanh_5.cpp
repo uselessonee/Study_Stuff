@@ -94,6 +94,30 @@ int Count_Char(char* Str)
 	return count;
 }
 
+int count_word(char* Str)
+{
+	int count;
+
+	for ( int i =0; Str[i] != '\0'; i++)
+	{
+		if (Str[i] == ' ') count++;
+	}
+
+	return count++;
+}
+
+
+
+void link_char(char* S1,char* S2)
+{
+	int leng = strlen(S1);
+	for (int i = leng; S2[i-leng] != '\0'; i++)
+	{
+		S1[i] = S2[i-leng];
+	}
+
+	printf("%s", S1);
+}
 
 int main()
 {
@@ -113,4 +137,6 @@ int main()
 	
 	
 	printf("%d ", Count_Char(S1));
+
+	printf("Dem tu:%d", count_word(S1));
 }

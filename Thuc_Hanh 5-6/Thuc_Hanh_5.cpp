@@ -23,8 +23,8 @@ void String_Norm(char *Str)
 	{
 		delete_char(Str, 0);
 	}
-
-	Str[0] = toupper
+	
+	Str[0] = toupper(Str[0]);
 	
 	for(int i =0; i< strlen(Str) -1; i++)
 	{
@@ -34,7 +34,7 @@ void String_Norm(char *Str)
 		}
 		if (Str[i]==' ' && Str[i+1]!=' ')
 		{
-			Str[i+1]=Str[i+1]-32; // Ascii
+			Str[i+1]=toupper(Str[i+1]);
 		}
 	}
 	
@@ -57,7 +57,7 @@ int Count_S2_in_S1(char* S1, char* S2)
 		{
 			for (int j =0; (S2[j] != '\0') ; j++)
 			{
-				if(S1[[i+j] != S2[j])
+				if(S1[i+j] != S2[j])
 				{
 					break;
 				}
@@ -71,6 +71,7 @@ int Count_S2_in_S1(char* S1, char* S2)
 	return count;
 }
 
+
 int Count_Char(char* Str)
 {
 	char x;
@@ -83,15 +84,15 @@ int Count_Char(char* Str)
 
 	int leng = strlen(Str);
 
-	for(int i =0; i< Str; i++)
+	for(int i =0; i< leng; i++)
 	{
 		if(tolower(Str[i]) == x)
 		{
 			count++;
 		}
 	}
+	return count;
 }
-
 
 
 int main()
@@ -109,6 +110,7 @@ int main()
 	printf("\nS2:");String_Norm(S2);
 	
 	printf("\n %d", Count_S2_in_S1(S1,S2));
-
-
+	
+	
+	printf("%d ", Count_Char(S1));
 }

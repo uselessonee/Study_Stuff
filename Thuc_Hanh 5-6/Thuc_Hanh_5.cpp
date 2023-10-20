@@ -71,6 +71,27 @@ int Count_S2_in_S1(char* S1, char* S2)
 	return count;
 }
 
+int Count_Char(char* Str)
+{
+	char x;
+	int count =0;
+
+	printf("Nhap ky tu can tim:");
+	scanf("%c", &x);
+
+	x = tolower(x);
+
+	int leng = strlen(Str);
+
+	for(int i =0; i< Str; i++)
+	{
+		if(tolower(Str[i]) == x)
+		{
+			count++;
+		}
+	}
+}
+
 
 
 int main()

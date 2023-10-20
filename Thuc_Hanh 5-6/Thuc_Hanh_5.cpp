@@ -23,6 +23,8 @@ void String_Norm(char *Str)
 	{
 		delete_char(Str, 0);
 	}
+
+	Str[0] = toupper
 	
 	for(int i =0; i< strlen(Str) -1; i++)
 	{
@@ -47,7 +49,26 @@ void String_Norm(char *Str)
 
 int Count_S2_in_S1(char* S1, char* S2)
 {
-	return strcmp(S1,S2);
+	int count =0;
+
+	for (int i =0; S1[i] != '\0'; i++)
+	{
+		if (S1[i] == S2[0])
+		{
+			for (int j =0; (S2[j] != '\0') ; j++)
+			{
+				if(S1[[i+j] != S2[j])
+				{
+					break;
+				}
+				if(S2[j+1] == '\0')
+				{
+					count++;
+				}
+			}
+		}
+	}
+	return count;
 }
 
 
@@ -67,4 +88,6 @@ int main()
 	printf("\nS2:");String_Norm(S2);
 	
 	printf("\n %d", Count_S2_in_S1(S1,S2));
+
+
 }

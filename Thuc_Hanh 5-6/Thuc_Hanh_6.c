@@ -18,37 +18,37 @@ struct Sinhvien
 
 void nhapThongTinSinhVien(struct Sinhvien *sv)
 {
-    printf("Nhập mã số sinh viên: ");
+    printf("Nhap ma so sinh vien: ");
     fgets(sv->masv, sizeof(sv->masv), stdin);
-    printf("Nhập họ tên sinh viên: ");
+    printf("Nhap ho ten sinh vien: ");
     fgets(sv->hoten, sizeof(sv->hoten), stdin);
-    printf("Nhập năm sinh của sinh viên: ");
+    printf("Nhap nam sinh cua sinh vien: ");
     scanf("%d", &sv->namsinh);
-    printf("Nhập giới tính của sinh viên: ");
+    printf("Nhap gioi tinh cua sinh vien: ");
     fgets(sv->phai, sizeof(sv->phai), stdin);
-    printf("Nhập ngành học của sinh viên: ");
+    printf("Nhap nganh hoc cua sinh vien: ");
     fgets(sv->nganhhoc, sizeof(sv->nganhhoc), stdin);
-    printf("Nhập kết quả học tập cuối khóa của sinh viên: ");
+    printf("Nhap ket qua hoc tap cuoi khoa cua sinh vien: ");
     scanf("%f", &sv->kqcuoikhoa);
-    printf("Nhập xếp loại của sinh viên: ");
+    printf("Nhap xep loai cua sinh vien: ");
     fgets(sv->xeploai, sizeof(sv->xeploai), stdin);
-    printf("Nhập quê quán của sinh viên: ");
+    printf("Nhap que quan cua sinh vien: ");
     fgets(sv->quequan, sizeof(sv->quequan), stdin);
 }
 
 void xuatThongTinSinhVien(struct Sinhvien *sv)
 {
-    printf("Mã số sinh viên: %s\n", sv->masv);
-    printf("Họ tên sinh viên: %s\n", sv->hoten);
-    printf("Năm sinh của sinh viên: %d\n", sv->namsinh);
-    printf("Giới tính của sinh viên: %s\n", sv->phai);
-    printf("Ngành học của sinh viên: %s\n", sv->nganhhoc);
-    printf("Kết quả học tập cuối khóa của sinh viên: %.2f\n", sv->kqcuoikhoa);
-    printf("Xếp loại của sinh viên: %s\n", sv->xeploai);
-    printf("Quê quán của sinh viên: %s\n", sv->quequan);
+    printf("Ma so sinh vien: %s\n", sv->masv);
+    printf("Ho ten sinh vien: %s\n", sv->hoten);
+    printf("Nam sinh cua sinh vien: %d\n", sv->namsinh);
+    printf("Gioi tinh cua sinh vien: %s\n", sv->phai);
+    printf("Nganh hoc cua sinh vien: %s\n", sv->nganhhoc);
+    printf("Ket qua hoc tap cuoi khoa cua sinh vien: %.2f\n", sv->kqcuoikhoa);
+    printf("Xep loai cua sinh vien: %s\n", sv->xeploai);
+    printf("Que quan cua sinh vien: %s\n", sv->quequan);
 }
 
-// Xếp loại sinh viên
+
 
 void xepLoaiSinhVien(struct Sinhvien *ds, int n)
 {
@@ -81,7 +81,7 @@ void xepLoaiSinhVien(struct Sinhvien *ds, int n)
 void xuatDanhSachSinhVien(struct Sinhvien *ds, int n)
 {
     int i;
-    printf("| Mã số sinh viên | Họ tên | Năm sinh | Giới tính | Ngành học | Kết quả học tập cuối khóa | Xếp loại | Quê quán |");
+    printf("| Ma so sinh vien | Ho ten | Nam sinh | Gioi tinh | nganh hoc | Ket qua hoc tap cuoi khoa | Xep loai | Que quan |");
     printf("\n");
     for (i = 0; i < n; i++)
     {
@@ -113,10 +113,10 @@ void sapXepSinhVienTheoKQ(struct Sinhvien *ds, int n)
 void timVaXuatSinhVienGioiXuatSac(struct Sinhvien *ds, int n)
 {
     int i;
-    printf("Danh sách sinh viên Giỏi hoặc Xuất sắc:\n");
+    printf("Danh sach sinh vien Gioi hoac Xuat sac:\n");
     for (i = 0; i < n; i++)
     {
-        if (strcmp(ds[i].xeploai, "Giỏi") == 0 || strcmp(ds[i].xeploai, "Xuất sắc") == 0)
+        if (strcmp(ds[i].xeploai, "Gioi") == 0 || strcmp(ds[i].xeploai, "Xuat sac") == 0)
         {
             xuatThongTinSinhVien(&ds[i]);
         }
@@ -127,7 +127,7 @@ void timVaXuatSinhVienTheoMASV(struct Sinhvien *ds, int n)
 {
     char masv[10];
     int i;
-    printf("Nhập mã số sinh viên cần tìm: ");
+    printf("Nhap ma so sinh vien can tim: ");
     fgets(masv, sizeof(masv), stdin);
     for (i = 0; i < n; i++)
     {
@@ -139,17 +139,17 @@ void timVaXuatSinhVienTheoMASV(struct Sinhvien *ds, int n)
     }
     if (i == n)
     {
-        printf("Không tìm thấy sinh viên có mã số là %s\n", masv);
+        printf("ko tim thay sinh vien co ma so la %s\n", masv);
     }
 }
 
-// Tìm và xuất thông tin Sinh viên theo nhóm NGANHHOC
+// tim và xuất thông tin sinh vien theo nhom NGANHHOC
 
 void timVaXuatSinhVienTheoNGANHHOC(struct Sinhvien *ds, int n)
 {
     char nganhhoc[30];
     int i;
-    printf("Nhập nhóm ngành học cần tìm: ");
+    printf("Nhap nhom nganh hoc can tim: ");
     fgets(nganhhoc, sizeof(nganhhoc), stdin);
     for (i = 0; i < n; i++)
     {
@@ -160,7 +160,7 @@ void timVaXuatSinhVienTheoNGANHHOC(struct Sinhvien *ds, int n)
     }
     if (i == n)
     {
-        printf("Không tìm thấy sinh viên thuộc nhóm ngành học là %s\n", nganhhoc);
+        printf("ko tim thay sinh vien thuoc nhom nganh hoc la %s\n", nganhhoc);
     }
 }
 

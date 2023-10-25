@@ -2,7 +2,11 @@
 #include <conio.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdlib.h>
 #include <stdbool.h>
+
+bool Run =1, MenuPrinted =0;
+int n;
 
 struct Sinhvien
 {
@@ -16,27 +20,59 @@ struct Sinhvien
     char quequan[30];
 };
 
-void nhapThongTinSinhVien(struct Sinhvien *sv)
+Sinhvien* sinh_vien;
+
+
+void RANK_STUDENT(Sinhvien *ds, int n)
 {
-    printf("Nhap ma so sinh vien: ");
-    fgets(sv->masv, sizeof(sv->masv), stdin);
-    printf("Nhap ho ten sinh vien: ");
-    fgets(sv->hoten, sizeof(sv->hoten), stdin);
-    printf("Nhap nam sinh cua sinh vien: ");
-    scanf("%d", &sv->namsinh);
-    printf("Nhap gioi tinh cua sinh vien: ");
-    fgets(sv->phai, sizeof(sv->phai), stdin);
-    printf("Nhap nganh hoc cua sinh vien: ");
-    fgets(sv->nganhhoc, sizeof(sv->nganhhoc), stdin);
-    printf("Nhap ket qua hoc tap cuoi khoa cua sinh vien: ");
-    scanf("%f", &sv->kqcuoikhoa);
-    printf("Nhap xep loai cua sinh vien: ");
-    fgets(sv->xeploai, sizeof(sv->xeploai), stdin);
-    printf("Nhap que quan cua sinh vien: ");
-    fgets(sv->quequan, sizeof(sv->quequan), stdin);
+    int i;
+    for (i = 0; i < n; i++)
+    {
+        if (ds[i].kqcuoikhoa < 1.5)
+        {
+            strcpy(ds[i].xeploai, "Yeu");
+        }
+        else if (ds[i].kqcuoikhoa <= 2.5)
+        {
+            strcpy(ds[i].xeploai, "Trung binh");
+        }
+        else if (ds[i].kqcuoikhoa <= 3.0)
+        {
+            strcpy(ds[i].xeploai, "Kha");
+        }
+        else if (ds[i].kqcuoikhoa <= 3.8)
+        {
+            strcpy(ds[i].xeploai, "Gioi");
+        }
+        else
+        {
+            strcpy(ds[i].xeploai, "Xuat sac");
+        }
+    }
 }
 
-void xuatThongTinSinhVien(struct Sinhvien *sv)
+void Input_Student_Info(Sinhvien *sv)
+{
+	fflush(stdin);
+    printf("Nhap ma so sinh vien: ");
+    fgets(sv->masv, 10 , stdin); fflush(stdin);
+    printf("Nhap ho ten sinh vien: ");
+    fgets(sv->hoten, 30, stdin); fflush(stdin);
+    printf("Nhap nam sinh cua sinh vien: ");
+    scanf("%d", &sv->namsinh); fflush(stdin);
+    printf("Nhap gioi tinh cua sinh vien: ");
+    fgets(sv->phai, 10 , stdin); fflush(stdin);
+    printf("Nhap nganh hoc cua sinh vien: ");
+    fgets(sv->nganhhoc, 30 , stdin); fflush(stdin);
+    printf("Nhap ket qua hoc tap cuoi khoa cua sinh vien: ");
+    scanf("%f", &sv->kqcuoikhoa); fflush(stdin);
+    
+    RANK_STUDENT(sv, n);
+    printf("Nhap que quan cua sinh vien: ");
+    fgets(sv->quequan, 30 , stdin); fflush(stdin);
+}
+
+void Print_Student_Info(Sinhvien *sv)
 {
     printf("Ma so sinh vien: %s\n", sv->masv);
     printf("Ho ten sinh vien: %s\n", sv->hoten);
@@ -50,35 +86,7 @@ void xuatThongTinSinhVien(struct Sinhvien *sv)
 
 
 
-void xepLoaiSinhVien(struct Sinhvien *ds, int n)
-{
-    int i;
-    for (i = 0; i < n; i++)
-    {
-        if (ds[i].kqcuoikhoa < 1.5)
-        {
-            strcpy(ds[i].xeploai, "Yếu");
-        }
-        else if (ds[i].kqcuoikhoa <= 2.5)
-        {
-            strcpy(ds[i].xeploai, "Trung bình");
-        }
-        else if (ds[i].kqcuoikhoa <= 3.0)
-        {
-            strcpy(ds[i].xeploai, "Khá");
-        }
-        else if (ds[i].kqcuoikhoa <= 3.8)
-        {
-            strcpy(ds[i].xeploai, "Giỏi");
-        }
-        else
-        {
-            strcpy(ds[i].xeploai, "Xuất sắc");
-        }
-    }
-}
-
-void xuatDanhSachSinhVien(struct Sinhvien *ds, int n)
+void Print_Student_List(Sinhvien *ds)
 {
     int i;
     printf("| Ma so sinh vien | Ho ten | Nam sinh | Gioi tinh | nganh hoc | Ket qua hoc tap cuoi khoa | Xep loai | Que quan |");
@@ -92,7 +100,7 @@ void xuatDanhSachSinhVien(struct Sinhvien *ds, int n)
     }
 }
 
-void sapXepSinhVienTheoKQ(struct Sinhvien *ds, int n)
+void Sort_Student_w_Result(Sinhvien *ds)
 {
     int i, j;
     struct Sinhvien temp;
@@ -110,7 +118,7 @@ void sapXepSinhVienTheoKQ(struct Sinhvien *ds, int n)
     }
 }
 
-void timVaXuatSinhVienGioiXuatSac(struct Sinhvien *ds, int n)
+void Find_Good_Student(Sinhvien *ds)
 {
     int i;
     printf("Danh sach sinh vien Gioi hoac Xuat sac:\n");
@@ -118,22 +126,24 @@ void timVaXuatSinhVienGioiXuatSac(struct Sinhvien *ds, int n)
     {
         if (strcmp(ds[i].xeploai, "Gioi") == 0 || strcmp(ds[i].xeploai, "Xuat sac") == 0)
         {
-            xuatThongTinSinhVien(&ds[i]);
+            Print_Student_Info(&ds[i]);
         }
     }
 }
 
-void timVaXuatSinhVienTheoMASV(struct Sinhvien *ds, int n)
+void Find_Student_Through_ID(Sinhvien *ds)
 {
     char masv[10];
     int i;
     printf("Nhap ma so sinh vien can tim: ");
     fgets(masv, sizeof(masv), stdin);
+    
+    
     for (i = 0; i < n; i++)
     {
         if (strcmp(ds[i].masv, masv) == 0)
         {
-            xuatThongTinSinhVien(&ds[i]);
+            Print_Student_Info(&ds[i]);
             break;
         }
     }
@@ -143,9 +153,9 @@ void timVaXuatSinhVienTheoMASV(struct Sinhvien *ds, int n)
     }
 }
 
-// tim và xuất thông tin sinh vien theo nhom NGANHHOC
 
-void timVaXuatSinhVienTheoNGANHHOC(struct Sinhvien *ds, int n)
+
+void Find_Student_Through_SUBJECT(Sinhvien *ds, int n)
 {
     char nganhhoc[30];
     int i;
@@ -155,7 +165,7 @@ void timVaXuatSinhVienTheoNGANHHOC(struct Sinhvien *ds, int n)
     {
         if (strcmp(ds[i].nganhhoc, nganhhoc) == 0)
         {
-            xuatThongTinSinhVien(&ds[i]);
+            Print_Student_Info(&ds[i]);
         }
     }
     if (i == n)
@@ -164,7 +174,82 @@ void timVaXuatSinhVienTheoNGANHHOC(struct Sinhvien *ds, int n)
     }
 }
 
-int main()
+
+void Menu()
 {
-    printf("%d", HamChar());
+	system("cls");
+	printf("****************************************************************\n");
+	printf("**            CHUONG TRINH QUAN LY SINH VIEN                  **\n");
+	printf("**            1. Nhap DS SINH VIEN                            **\n");
+	printf("**            2. IN DS SINH VIEN                              **\n");
+	printf("**            3. SAP XEP THEO KQ cuoikhoa                     **\n");
+	printf("**            4. IN SV GIOI, XUAT SAC                         **\n");
+	printf("**            5. TIM KIEM SV THEO MSV                         **\n");
+	printf("**            0. THOAT                                        **\n");
+	printf("****************************************************************\n");
+	
+	MenuPrinted =1;
+}
+
+
+void Input()
+{
+    // Input
+    if (_kbhit())
+    {
+        switch (getch())
+        {
+        case '1':
+        	
+        	printf("Nhap so luong sinh vien");
+        	scanf("%d", &n);
+
+            sinh_vien = (Sinhvien*) malloc(sizeof(Sinhvien) * n);
+
+
+            for (int i =0; i< n; i++)
+            {
+                Input_Student_Info(&sinh_vien[i]);
+            }
+            
+            printf("\nEnter de tiep tuc\n");
+            getch();
+            break;
+        case '2':
+        	Print_Student_List
+            getch();
+            break;
+        case '3':
+        	Sort_Student_w_Result(sinh_vien);
+            getch();
+            break;
+        case '4':
+        	Find_Good_Student(sinh_vien);
+            printf("\nEnter de tiep tuc\n");
+            getch();
+            break;
+        case '5':
+    		Find_Student_Through_ID(sinh_vien);
+            printf("\nEnter de tiep tuc\n");
+            getch();
+            break;
+        case '0':
+            break;
+        default:
+            break;
+        }
+        
+        MenuPrinted =0;
+
+    }
+}
+
+int main()
+{	
+	while (Run)
+	{
+		if(!MenuPrinted )Menu();
+		Input();
+	}
+	free(sinh_vien);
 }

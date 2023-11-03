@@ -216,7 +216,7 @@ void Input()
             getch();
             break;
         case '2':
-        	Print_Student_List
+        	Print_Student_List(sinh_vien);
             getch();
             break;
         case '3':

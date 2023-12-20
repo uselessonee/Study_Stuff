@@ -1,0 +1,7 @@
+Nguyen Van 28Tech,CNTT1,22/12/2004,3.5
+
+Hoang Van Long,DTVT1,01/10/2003,3.8
+
+Pham Van Nam,CNTT2,10/07/2004,2.5
+
+Pham Thuy Linh,CNTT1,05/05/2003,3.1
